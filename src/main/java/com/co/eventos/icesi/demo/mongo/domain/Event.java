@@ -2,11 +2,9 @@ package com.co.eventos.icesi.demo.mongo.domain;
 
 import com.co.eventos.icesi.demo.postgresql.DTO.ProgramDTO;
 import com.co.eventos.icesi.demo.postgresql.domain.Faculty;
-import jakarta.persistence.GeneratedValue;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -32,5 +30,7 @@ public class Event {
     private Faculty[] faculties;
 
     private ProgramDTO[] programs;
+
+    private String[] attendants;
 
 }

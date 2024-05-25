@@ -19,8 +19,6 @@ public class FacultyRestController {
     @Autowired
     private FacultyRepository repository;
 
-
-
     @GetMapping("/all")
     public ResponseEntity<List<Faculty>> findAll() {
         return ResponseEntity.ok(repository.findAll());

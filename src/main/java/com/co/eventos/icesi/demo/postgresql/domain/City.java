@@ -18,5 +18,4 @@ public class City {
     @ManyToOne
     @JoinColumn(name = "cod_dpto")
     private Department department;
-
 }
