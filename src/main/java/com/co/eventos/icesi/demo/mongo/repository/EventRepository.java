@@ -3,13 +3,9 @@ package com.co.eventos.icesi.demo.mongo.repository;
 import com.co.eventos.icesi.demo.mongo.domain.Event;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Update;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +13,8 @@ import java.util.Optional;
 public interface EventRepository extends MongoRepository<Event, String> {
 
     void deleteByTitle(String title);
+
+    Optional<Event> findById(String id);
 
     @Aggregation(pipeline = {
             "{$unwind: '$categories'}",

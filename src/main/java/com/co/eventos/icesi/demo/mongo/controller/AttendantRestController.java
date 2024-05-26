@@ -60,5 +60,15 @@ public class AttendantRestController {
         repositoryUpdate.addEventsToAttendant(attendantId, categories);
     }
 
+    @GetMapping("/findByUsername")
+    public ResponseEntity<Attendant> findByUsername(@RequestParam String username) {
+        return ResponseEntity.ok(repository.findById(username).orElse(null));
+    }
+
+    @GetMapping("/findByName")
+    public ResponseEntity<Attendant> findByName(@RequestParam String name) {
+        return ResponseEntity.ok(repository.findByName(name).orElse(null));
+    }
+
 
 }

@@ -35,6 +35,11 @@ public class EventRestController {
         return ResponseEntity.ok(repository.findDistinctCategories());
     }
 
+    @GetMapping("/findByTitle")
+    public ResponseEntity<Event> findByTitle(@RequestParam String eventTitle) {
+        return ResponseEntity.ok(repository.findById(eventTitle).orElse(null));
+    }
+
     @GetMapping("/search")
     public ResponseEntity<List<Event>> searchEvents(
             @RequestParam(value = "title", required = false) String title,
