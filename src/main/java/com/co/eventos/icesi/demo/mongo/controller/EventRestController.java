@@ -2,6 +2,7 @@ package com.co.eventos.icesi.demo.mongo.controller;
 
 import com.co.eventos.icesi.demo.mongo.domain.Event;
 import com.co.eventos.icesi.demo.mongo.repository.EventRepository;
+import com.co.eventos.icesi.demo.mongo.repository.EventUpdateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,9 @@ public class EventRestController {
 
     @Autowired
     private EventRepository repository;
+
+    @Autowired
+    private EventUpdateRepository repositoryUpdate;
 
     @PostMapping("/add")
     public ResponseEntity<Event> addEvent(@RequestBody Event event) {
@@ -53,6 +57,14 @@ public class EventRestController {
                 title != null ? title : "",
                 location != null ? location : ""
         ));
+    }
+
+    @PutMapping("/addAttendants")
+    public void addAttendants(
+            @RequestParam String title,
+            @RequestParam List<String> attendants
+    ) {
+        repositoryUpdate.addAttendantsToList(title, attendants);
     }
 
 }

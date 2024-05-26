@@ -2,6 +2,7 @@ package com.co.eventos.icesi.demo.mongo.controller;
 
 import com.co.eventos.icesi.demo.mongo.domain.Attendant;
 import com.co.eventos.icesi.demo.mongo.repository.AttendantRepository;
+import com.co.eventos.icesi.demo.mongo.repository.AttendantUpdateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,9 @@ public class AttendantRestController {
 
     @Autowired
     AttendantRepository repository;
+
+    @Autowired
+    AttendantUpdateRepository repositoryUpdate;
 
     @PostMapping("/add")
     public ResponseEntity<Attendant> addAttendant(@RequestBody Attendant attendant) {
@@ -47,5 +51,14 @@ public class AttendantRestController {
     public void deleteById(@RequestParam String attendantId) {
         repository.deleteByUsername(attendantId);
     }
+
+    @PutMapping("/addEvents")
+    public void addEvents(
+            @RequestParam String attendantId,
+            @RequestParam List<String> categories
+    ) {
+        repositoryUpdate.addEventsToAttendant(attendantId, categories);
+    }
+
 
 }
