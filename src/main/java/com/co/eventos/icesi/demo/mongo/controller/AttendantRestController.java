@@ -70,5 +70,8 @@ public class AttendantRestController {
         return ResponseEntity.ok(repository.findByName(name).orElse(null));
     }
 
-
+    @GetMapping("/findByUsernameList")
+    public ResponseEntity<List<Attendant>> findByUsernameList(@RequestParam List<String> usernameList) {
+        return ResponseEntity.ok(repository.findByUsernameIn(usernameList));
+    }
 }

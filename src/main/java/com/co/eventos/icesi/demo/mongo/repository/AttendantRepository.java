@@ -32,6 +32,8 @@ public interface AttendantRepository extends MongoRepository<Attendant, String> 
 
     void deleteByUsername(String username);
 
+    List<Attendant> findByUsernameIn(List<String> usernames);
+
 
 
 }
